@@ -6,14 +6,40 @@
     font-family: Roboto, sans-serif;
 }
 
+body{
+    display: flex;
+    justify-content: center;
+    background-color: yellow;
+}
+
 
 .calculator-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: red;
+    background-color: grey;
     padding: 16px;
     color: white;
+}
+
+/* Must make input section wrap to next line, go look at landing page project for how i wrapped text in the divs */ 
+.input-section,
+.output-section{
+    width: 296px;
+    height: 75px;
+    background-color: black;
+    padding: 16px;
+    color: white;
+
+    margin-bottom: 16px;
+    
+}
+
+
+
+.output-section{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .square{
@@ -30,11 +56,13 @@
     background-color: grey;
 }
 
-.square.sign{
+.square.sign,
+#equals,
+.dot{
     background-color: orange;
 }
 
-.operation{
+.square.operation{
     background-color: #1F2937;
 }
 
@@ -42,11 +70,6 @@
     width: 162px;
     border-radius: 12px;
 
-}
-
-.header{
-    background-color: black;
-    padding: 16px;
 }
 
 .button-container{

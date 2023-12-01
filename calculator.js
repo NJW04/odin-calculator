@@ -13,17 +13,23 @@ function operate(firstNum,secondNum,sign){
           return firstNum * secondNum;
           break;
         case '÷':
-            return (firstNum / secondNum).toFixed(2); //Maybe use rounding here
+            return (firstNum / secondNum).toFixed(2);
       }
 }
 
 function computeAnswer(stringEquation){
   let eqnArray = [];
   let counter = 0;
+  let stringLengthCounter = 0;
   let symbolsToCheck = ['+','-','x','÷'];
   let currentBuiltNumber = '';
   for (let char of displayEquation){ //2+2x3
-    if (!symbolsToCheck.includes(char)){
+    stringLengthCounter++;
+    if (stringLengthCounter == stringEquation.length && !(symbolsToCheck.includes(char))){
+      currentBuiltNumber += char;
+      eqnArray[counter] = currentBuiltNumber;
+    }
+    else if (!symbolsToCheck.includes(char)){
       currentBuiltNumber += char;
     }
     else if (symbolsToCheck.includes(char)){
@@ -33,12 +39,11 @@ function computeAnswer(stringEquation){
         counter+= 2;
       }
     }
-  eqnArray[counter] = currentBuiltNumber;
+
   if (eqnArray.length % 2 == 0){
-    return 'bad error!';
+    return 'Error, bad equation!';
   }
   else{
-    console.log(eqnArray);
     let answer;
     for (let i=0; i<eqnArray.length-2; i += 2){
       if (eqnArray[i+1] == '÷' && eqnArray[i+2] == 0){
@@ -65,6 +70,9 @@ for (const num of allNums) {
   num.addEventListener('click', () => {
     displayEquation += num.textContent;
     updateDisplay();
+    for (const sign of allSigns){
+      sign.removeAttribute('disabled');
+    }
   });
 }
 
@@ -74,6 +82,10 @@ for (const sign of allSigns) {
     displayEquation += sign.textContent ;
     updateDisplay();
     dotButton.removeAttribute('disabled');
+    //sign.setAttribute("disabled", "disabled");
+    for (const disSign of allSigns){
+      disSign.setAttribute("disabled", "disabled");
+    }
   });
 }
 
@@ -101,7 +113,12 @@ equalsButton.addEventListener('click', () => {
 
 const backButton = document.querySelector('.delete');
 backButton.addEventListener('click', () => {
+  if (displayEquation.charAt(displayEquation.length-1) === '.'){
+    dotButton.removeAttribute('disabled');
+  }
   displayEquation = displayEquation.slice(0,displayEquation.length-1);
   updateDisplay();
+  const outputArea = document.querySelector('.output-section');
+  outputArea.textContent = '';
 });
 

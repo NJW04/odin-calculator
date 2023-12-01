@@ -7,10 +7,9 @@
 }
 
 body{
+    background-color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: black;
 }
 
 
@@ -22,26 +21,30 @@ body{
     padding: 16px;
     margin-top: 16px;
     color: white;
+    border: 4px black solid;
+    border-radius: 16px;
 }
 
-/* Must make input section wrap to next line, go look at landing page project for how i wrapped text in the divs */ 
-.input-section,
-.output-section{
-    width: 296px;
-    height: 75px;
+.input-section{
+    width: 293px;
+    min-height: 33px;
     background-color: black;
     padding: 16px;
     color: white;
-
-    margin-bottom: 16px;
+    word-wrap: break-word;
     
 }
 
-
-
 .output-section{
+    width: 293px;
+    min-height: 33px;
+    background-color: black;
+    padding: 16px;
+    color: white;
+    word-wrap: break-word;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 16px;
 }
 
 .square{

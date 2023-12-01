@@ -47,7 +47,7 @@ function computeAnswer(stringEquation){
     let answer;
     for (let i=0; i<eqnArray.length-2; i += 2){
       if (eqnArray[i+1] == '÷' && eqnArray[i+2] == 0){
-        return "BEEP BOOP DIVIDING BY 0 NONO!";
+        return "Dividing By 0!";
       }else{
         let num1 = Number(eqnArray[i]);
         let sign_ = eqnArray[i+1];

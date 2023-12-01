@@ -82,7 +82,6 @@ for (const sign of allSigns) {
     displayEquation += sign.textContent ;
     updateDisplay();
     dotButton.removeAttribute('disabled');
-    //sign.setAttribute("disabled", "disabled");
     for (const disSign of allSigns){
       disSign.setAttribute("disabled", "disabled");
     }
@@ -113,8 +112,18 @@ equalsButton.addEventListener('click', () => {
 
 const backButton = document.querySelector('.delete');
 backButton.addEventListener('click', () => {
+  let symbolsToCheck = ['+','-','x','÷'];
+  let numbersToCheck = ['1','2','3','4','5','6','7','8','9','0',];
   if (displayEquation.charAt(displayEquation.length-1) === '.'){
     dotButton.removeAttribute('disabled');
+  }else if(symbolsToCheck.includes(displayEquation.charAt(displayEquation.length-1))){
+    for (const sign of allSigns){
+      sign.removeAttribute('disabled');
+    }
+  }else if (numbersToCheck.includes(displayEquation.charAt(displayEquation.length-1)) && symbolsToCheck.includes(displayEquation.charAt(displayEquation.length-2))){
+    for (const disSign of allSigns){
+      disSign.setAttribute("disabled", "disabled");
+    }
   }
   displayEquation = displayEquation.slice(0,displayEquation.length-1);
   updateDisplay();

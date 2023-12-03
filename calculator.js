@@ -1,4 +1,4 @@
-//The global variablest that hold current state of eqn
+//The global variable that hold current state of eqn
 let displayEquation = '';
 
 function operate(firstNum,secondNum,sign){
@@ -42,6 +42,9 @@ function computeAnswer(stringEquation){
 
   if (eqnArray.length % 2 == 0){
     return 'Error, bad equation!';
+  }
+  else if(eqnArray.length == 1){
+    return eqnArray[0];
   }
   else{
     let answer;

@@ -11,6 +11,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 
@@ -20,7 +21,6 @@ body{
     align-items: center;
     background-color: grey;
     padding: 16px;
-    margin-top: 16px;
     color: white;
     border: 4px black solid;
     border-radius: 16px;
